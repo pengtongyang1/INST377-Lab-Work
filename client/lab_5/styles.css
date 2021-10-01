@@ -28,6 +28,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   position: relative;
+  column-gap: 35px;
 }
 
 h1 {
@@ -45,7 +46,8 @@ h1 {
   padding: 20px;
   background-color: white;
   position: relative;
-  height: auto;
+  top: 25px;
+  left:150px;
 }
 
 .wrapper_2 {
@@ -57,22 +59,34 @@ h1 {
   background-color: white;
   position: relative;
   width: 450px;
-  top:auto;
-  left:auto;
+  top:25px;
+  left:150px;
 }
 
 .container {
   max-width: 950px;
   margin-top: 25px;
+  height: 500px;
 }
 
-.botton {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 8px 16px;
-  text-align: center;
-  text-decoration: none;
+.form-row button {
   font-size: 16px;
+  font-weight: bold;
+
+  color: #FFFFFF;
+  background-color: teal;
+
+  border: none;
+  border-radius: 3px;
+
+  padding: 10px 25px;
   cursor: pointer;
+}
+
+.form-row button:hover {
+  background-color: #76AEED;
+}
+
+.form-row button:active {
+  background-color: #407FC7;
 }
