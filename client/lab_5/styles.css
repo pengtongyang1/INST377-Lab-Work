@@ -13,6 +13,7 @@ body {
 }
 
 /* Page Layout */
+<<<<<<< HEAD
 .top_column {
   display: flex;
   flex-wrap: wrap;
@@ -36,10 +37,16 @@ h1 {
     top: 15px;
     left: 15px;
     font-size: 30px;
+=======
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+>>>>>>> 17514e1bb9519f84c7a2fb0ab664c5b893830434
 }
 
 .wrapper {
   display: flex;
+<<<<<<< HEAD
   border: 1px solid #888;
   display: inline-block;
   border-radius: 6px;
@@ -89,4 +96,10 @@ h1 {
 
 .form-row button:active {
   background-color: #407FC7;
+=======
+}
+.container {
+  max-width: 960px;
+  margin-top: 25px;
+>>>>>>> 17514e1bb9519f84c7a2fb0ab664c5b893830434
 }

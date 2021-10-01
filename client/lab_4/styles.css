@@ -104,9 +104,11 @@
 }
 
 .photo-grid {
-  width: 380px;
+  width: 900px;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
   align-items: center;
 }
 
@@ -148,39 +150,23 @@
   transform: translateY(-50%);
 }
 
-.carousel__actions button {
+.carousel .carousel__actions button {
   border: 2px solid black;
-  border-radius: 12px;
-  background-color: white;
-  color: black;
-  padding: 15px;
-  text-align: center;
-  text-decoration: none;
-  display: block;
-  font-size: 16px;
-  line-height: 2px;
-  cursor: pointer;
-}
-
-.carousel__actions:active button {
-  border: 2px solid black;
-  border-radius: 12px;
   background-color: orange;
   color: black;
-  padding: 15px;
+  padding: none;
   text-align: center;
   text-decoration: none;
   display: block;
-  font-size: 16px;
-  line-height: 2px;
+  font-size: 20px;
   cursor: pointer;
 }
 
-.carousel__actions button#carousel__button--prev {
+.carousel .carousel__actions button#carousel__button--prev {
   margin-left: 20px;
 }
 
-.carousel__actions button#carousel__button--next {
+.carousel .carousel__actions button#carousel__button--next {
   margin-right: 20px;
 }
 
