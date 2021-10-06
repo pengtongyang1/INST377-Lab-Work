@@ -108,9 +108,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function moveLeft () {
     undraw()
-    const isAtLeftEge = current.some(index => (currentPosition + index) % width === 0)
+    const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0)
 
-    if (!isAtLeftEge) currentPosition -= 1
+    if (!isAtLeftEdge) currentPosition -= 1
 
     if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
       currentPosition += 1
@@ -119,26 +119,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function moveRight () {
-    undraw()
-    const isAtRigthEdge = current.some(index => (currentPosition + index) % width === width -1)
+      undraw()
+      const isAtRightEdge = current.some(index => (currentPosition + index) % width === width -1)
 
-    if (!isAtRigthEdge) currentPosition += 1
+      if (!isAtRightEdge) currentPosition += 1
 
-    if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
-      currentPosition -= 1
+      if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+        currentPosition -= 1
+      }
+      draw()
     }
-    draw()
-  }
 
-  function rotate () {
-    undraw()
-    currentRotation++
-    if (currentRotation === current.length) {
-      currentRotation = 0
+    function rotate () {
+      undraw()
+      currentRotation++
+      if (currentRotation === current.length) {
+        currentRotation = 0
+      }
+      current = theTetrominoes[random][currentRotation]
+      draw()
     }
-    current = theTetrominoes[random][currentRotation]
-    draw()
-  }
 
   const displaySquares = document.querySelectorAll('.mini-grid div')
   const displayWidth = 4
@@ -195,9 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function gameOver() {
     if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
-      scoreDisplay.innerHTML = 'end'
+      scoreDisplay.innerHTML = 'GameOver'
       clearInterval(timerId)
-  }
+      document.removeEventListener('keydown', control)
+    }
 }
 
 
