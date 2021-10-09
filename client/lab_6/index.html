@@ -18,11 +18,12 @@
         
         const categories = []; 
     
-        const request = await fetch(endpoint) 
+        const request = await fetch(endpoint)
         .then(blob => blob.json())
         .then(data => categories.push(...data))
+
         
-        
+    
         function findMatches(wordToMatch, categories) {
         return categories.filter(place => {
         const regex = new RegExp(wordToMatch, 'gi');
