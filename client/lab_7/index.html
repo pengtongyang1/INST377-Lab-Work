@@ -3,21 +3,23 @@
   <head>
     <meta charset='UTF-8'/>
     <title>Pengtong Yang Lab 7</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="script.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
+    crossorigin=""/></link>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
   </head>
   <body>
-      <h1>Pengtong Yang Lab 7</h1>
+      <h1>Pengtong Yang Lab 7 </h1>
       <form class = "search-form">
         <input type = "text" class ="search" placeholder = "">
         <ul class = "suggestions"> 
         </ul>
       </form>
-    
+      <div id="mapid"> </div>
 <script>
     async function windowActions() {
         const endpoint = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
@@ -60,10 +62,16 @@
     
     searchInput.addEventListener('change', displayMatches);
     searchInput.addEventListener('keyup', (evt) => { displayMatches(evt) });
+   
     
-</script>
+}
+window.onload = windowActions;
 
+</script>
 
 </body>
 
 </html>
+
+
+
