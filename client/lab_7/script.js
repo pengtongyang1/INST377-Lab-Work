@@ -1,38 +1,48 @@
-var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+async function windowActions() {
+    const endpoint = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+    
+    const categories = []; 
 
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'your.mapbox.access.token'
-}).addTo(mymap);
-var marker = L.marker([51.5, -0.09]).addTo(mymap);
-var circle = L.circle([51.508, -0.11], {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    radius: 500
-}).addTo(mymap);
-var polygon = L.polygon([
-    [51.509, -0.08],
-    [51.503, -0.06],
-    [51.51, -0.047]
+    const request = await fetch(endpoint)
+    .then(blob => blob.json())
+    .then(data => categories.push(...data))
 
-marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-circle.bindPopup("I am a circle.");
-polygon.bindPopup("I am a polygon.");
-]).addTo(mymap);
+    
 
-var popup = L.popup();
+    function findMatches(wordToMatch, categories) {
+    return categories.filter(place => {
+    const regex = new RegExp(wordToMatch, 'gi');
+    return place.category.match(regex) || place.name.match(regex) || place.city.match(regex) || place.zip.match(regex)
+    });
+}   
+       
 
-function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
-        .openOn(mymap);
+    function displayMatches(event) {
+    const matchArray = findMatches(event.target.value, categories);
+    const html = matchArray.slice(0, 5).map(place => { 
+        const regex = new RegExp(event.target.value, 'gi')
+        return ` 
+            <li>
+                <span class ="name">${place.name}</span>
+            </li>  
+                <span class ="category">${place.category}</span>
+                <br><i><span class ="address_line_1">${place.address_line_1}</span></i>
+                <br><i><span class ="city">${place.city}</span></i>
+                <br><i><span class ="zip">${place.zip}</span></i>
+                <br>
+            `;
+        }).join('');
+        suggestions.innerHTML = html;
+    }
+
+        
+    
+   
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', (evt) => { displayMatches(evt) });
 }
 
-mymap.on('click', onMapClick); 
-
+window.onload = windowActions;
