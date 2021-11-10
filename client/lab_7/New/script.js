@@ -12,7 +12,7 @@ async function windowActions() {
     function findMatches(wordToMatch, categories) {
     return categories.filter(place => {
     const regex = new RegExp(wordToMatch, 'gi');
-    return place.album_name.match(regex)
+    return place.album_name.match(regex) || place.song_name.match(regex) || place.city.match(regex) || place.zip.match(regex)
     });
 }   
        
@@ -23,9 +23,12 @@ async function windowActions() {
         const regex = new RegExp(event.target.value, 'gi')
         return ` 
             <li>
-           
-                <span class ="category">${place.album_name}</span>
-            </li>  
+                <span class ="album_name">${place.album_name}</span>
+             
+           </li>  
+           <li>
+           <span class ="song_name">${place.song_name}</span>
+           </li>  
             `;
         }).join('');
         suggestions.innerHTML = html;
