@@ -24,9 +24,6 @@ async function windowActions() {
         return ` 
             <li>
                 <span class ="album_name">${place.album_name}</span>
-             
-           </li>  
-           <li>
            <span class ="song_name">${place.song_name}</span>
            </li>  
             `;
