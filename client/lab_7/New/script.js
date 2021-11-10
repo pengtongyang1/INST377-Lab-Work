@@ -1,5 +1,5 @@
 async function windowActions() {
-    const endpoint = '/api/albumCustom';
+    const endpoint = '/api/album';
     
     const categories = []; 
 

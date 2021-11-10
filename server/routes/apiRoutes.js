@@ -11,7 +11,7 @@ import db from '../database/initializeDB.js';
 
 const router = express.Router();
 
-import albumCustom from './server/controllers/albumCustom.js';
+import albumCustom from '../controllers/albumCustom.js';
 
 
 router.get('/', (req, res) => {
