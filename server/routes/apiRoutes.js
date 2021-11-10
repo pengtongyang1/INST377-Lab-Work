@@ -3,9 +3,16 @@ import express from 'express';
 import sequelize from 'sequelize';
 import chalk from 'chalk';
 
+
+
 import db from '../database/initializeDB.js';
 
+
+
 const router = express.Router();
+
+import albumCustom from './server/controllers/albumCustom.js';
+
 
 router.get('/', (req, res) => {
   console.log('You touched the default route!');
@@ -16,8 +23,18 @@ router.get('/demo', (req, res) => {
   console.log('You touched the demo route!');
   res.send('<h1>Welcome to the UMD Dining API!</h1><br>');
 });
-
-
+///Music controller imported///
+router.get('/album', async (req, res) => {
+  try {
+    const result = await db.sequelizeDB.query(albumCustom, {
+      type: sequelize.QueryTypes.SELECT
+    });
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.error('Server error');
+  }
+});
 // /////////////////////////////////
 // ////WholeMeal demos////////
 // /////////////////////////////////

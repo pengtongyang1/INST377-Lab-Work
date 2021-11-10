@@ -45,7 +45,7 @@
                 `;
             }).join('');
             suggestions.innerHTML = html;
-        
+            console.log(displayMatches);
         }
     
     const searchInput = document.querySelector('.search');
@@ -53,6 +53,7 @@
     
     searchInput.addEventListener('change', displayMatches);
     searchInput.addEventListener('keyup', (evt) => { displayMatches(evt) });
+    
 }
 window.onload = windowActions;
 </script>

@@ -1,5 +1,5 @@
 async function windowActions() {
-    const endpoint = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+    const endpoint = '/api/albumCustom';
     
     const categories = []; 
 
@@ -12,7 +12,7 @@ async function windowActions() {
     function findMatches(wordToMatch, categories) {
     return categories.filter(place => {
     const regex = new RegExp(wordToMatch, 'gi');
-    return place.category.match(regex) || place.name.match(regex) || place.city.match(regex) || place.zip.match(regex)
+    return place.album_name.match(regex)
     });
 }   
        
@@ -23,13 +23,9 @@ async function windowActions() {
         const regex = new RegExp(event.target.value, 'gi')
         return ` 
             <li>
-                <span class ="name">${place.name}</span>
+           
+                <span class ="category">${place.album_name}</span>
             </li>  
-                <span class ="category">${place.category}</span>
-                <br><i><span class ="address_line_1">${place.address_line_1}</span></i>
-                <br><i><span class ="city">${place.city}</span></i>
-                <br><i><span class ="zip">${place.zip}</span></i>
-                <br>
             `;
         }).join('');
         suggestions.innerHTML = html;
